@@ -4,10 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>home</title>
 </head>
 <body>
-    <h1>Seja Bem Vindo
-    </h1>
+    <h1>Seja Bem Vindo</h1>
+
+    <p>Agora são: {{now}}</p>
+
+    <ul>
+    {% for cliente in clientes %}
+
+        {% if cliente == "c1"%}
+        <li><b>{{cliente}}</b></li>
+        {% else %}
+        <li>{{cliente}}</li>
+        {% endif %}
+
+    {% endfor %}
+    </ul>
 </body>
 </html>
