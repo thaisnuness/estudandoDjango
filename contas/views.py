@@ -28,12 +28,20 @@ def nova_transacao(request):
     return render (request, 'contas/form.html', {'form':form})
 
 def update(request, pk):
-    form = {}
+    data = {}
     transacao = Transacao.objects.get(pk=pk)
     form = TransacaoForm(request.POST or None, instance=transacao)
-
+    
     if form.is_valid():
         form.save()
         return redirect('url_listagem')
 
-    return render (request, 'contas/form.html', {'form':form})
+    data['form'] = form
+    data['transacao'] = transacao
+    return render (request, 'contas/form.html', data)
+    #return render (request, 'contas/form.html', {'form':form}, {'transacao':form})
+
+def delete(request, pk):
+    transacao = Transacao.objects.get(pk=pk)
+    transacao.delete()
+    return redirect('url_listagem')
