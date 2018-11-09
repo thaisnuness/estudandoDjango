@@ -9,8 +9,11 @@
 <body>
     <ul>
         {% for transacao in transacoes%}
-        <li>{{transacao.descricao}} - R${{transacao.valor}} - {{transacao.data}} - {{transacao.categoria}}</li>
+        <li> <a href="{% url 'url_update' transacao.id %}">{{transacao.descricao}} - R${{transacao.valor}} 
+            - {{transacao.data}} - {{transacao.categoria}}</a></li>
         {% endfor%}
     </ul>
+
+    <a href="{% url 'url_nova_transacao'%}">Nova Transação</a>
 </body>
 </html>
